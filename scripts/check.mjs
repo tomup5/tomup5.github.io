@@ -37,6 +37,13 @@ const checks = [
     const missing = ["projects", "about", "skills", "contact"].filter((id) => !html.includes(`id="${id}"`));
     return missing.length === 0 || `missing sections: ${missing.join(", ")}`;
   }],
+  ["resumeIsPdf", () => {
+    const p = join(root, "resume.pdf");
+    if (!existsSync(p)) return "resume.pdf missing";
+    const buf = readFileSync(p);
+    return (buf.length > 10_000 && buf.subarray(0, 5).toString() === "%PDF-") ||
+      `resume.pdf is not a real PDF (${buf.length} bytes)`;
+  }],
   ["sectionsFilled", () => {
     const empty = ["about", "skills", "contact"].filter((id) => {
       const m = html.match(new RegExp(`<section id="${id}">([\\s\\S]*?)</section>`));
