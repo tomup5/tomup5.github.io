@@ -37,6 +37,35 @@ const checks = [
     const missing = ["projects", "about", "skills", "contact"].filter((id) => !html.includes(`id="${id}"`));
     return missing.length === 0 || `missing sections: ${missing.join(", ")}`;
   }],
+  ["sectionsFilled", () => {
+    const empty = ["about", "skills", "contact"].filter((id) => {
+      const m = html.match(new RegExp(`<section id="${id}">([\\s\\S]*?)</section>`));
+      return !m || !/<h2>/.test(m[1]) || m[1].replace(/<[^>]+>/g, "").trim().length < 20;
+    });
+    return empty.length === 0 || `empty sections: ${empty.join(", ")}`;
+  }],
+  ["contactLinks", () =>
+    (html.includes('href="mailto:thomasdupree2024@gmail.com"') &&
+      html.includes('href="https://www.linkedin.com/in/thomas-dupree-6a1526380/"')) ||
+    "contact email or LinkedIn link missing"],
+  ["contrast", () => {
+    const css = read("style.css");
+    const token = (n) => css.match(new RegExp(`--${n}:\\s*(#[0-9a-fA-F]{6})`))?.[1];
+    const lum = (hex) => {
+      const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+        .map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+      return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+    };
+    const ratio = (a, b) => {
+      const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x);
+      return (hi + 0.05) / (lo + 0.05);
+    };
+    const bg = token("bg");
+    const low = ["text", "muted", "accent"]
+      .map((n) => [n, ratio(token(n), bg)])
+      .filter(([, r]) => r < 4.5);
+    return low.length === 0 || low.map(([n, r]) => `${n} ${r.toFixed(2)}:1`).join(", ");
+  }],
 ];
 
 const failures = [];
