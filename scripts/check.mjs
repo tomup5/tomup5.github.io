@@ -37,6 +37,12 @@ const checks = [
     const missing = ["projects", "about", "skills", "contact"].filter((id) => !html.includes(`id="${id}"`));
     return missing.length === 0 || `missing sections: ${missing.join(", ")}`;
   }],
+  ["internalDocsNotPublished", () => {
+    const cfg = read("_config.yml");
+    if (cfg === null) return "_config.yml missing; GitHub Pages would publish docs/ as web pages";
+    const missing = ["docs", "scripts"].filter((d) => !new RegExp(`^\\s*-\\s*${d}\\s*$`, "m").test(cfg));
+    return missing.length === 0 || `_config.yml does not exclude: ${missing.join(", ")}`;
+  }],
   ["resumeIsPdf", () => {
     const p = join(root, "resume.pdf");
     if (!existsSync(p)) return "resume.pdf missing";

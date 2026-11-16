@@ -1,0 +1,5 @@
+# GitHub Pages: serve only the site, not internal notes or tooling.
+exclude:
+  - docs
+  - scripts
+  - README.md
