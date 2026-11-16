@@ -50,3 +50,102 @@ a:focus-visible {
   outline-offset: 3px;
   border-radius: 2px;
 }
+
+/* Type */
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  font-weight: 600;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 500;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+p {
+  margin: 0.75rem 0 0;
+}
+
+/* Header */
+
+header {
+  padding-top: clamp(4rem, 12vw, 7rem);
+  padding-bottom: clamp(4rem, 10vw, 6rem);
+}
+
+.intro {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 34ch;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Sections */
+
+section {
+  margin-bottom: 6rem;
+}
+
+/* Projects */
+
+.project + .project {
+  margin-top: 5rem;
+}
+
+.project img {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+
+.image-link {
+  display: block;
+}
+
+.tech {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1rem;
+}

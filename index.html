@@ -15,10 +15,45 @@
 </head>
 <body>
   <header>
+    <h1>Thomas Dupree</h1>
+    <p class="intro">CS + Math student at Saint Louis University building web apps, games, and tools.</p>
+    <p class="links">
+      <a class="button" href="resume.pdf">Resume</a>
+      <a href="https://github.com/tomup5" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/thomas-dupree-6a1526380/" rel="noopener">LinkedIn</a>
+    </p>
   </header>
 
   <main>
     <section id="projects">
+      <h2>Projects</h2>
+
+      <article class="project">
+        <img src="assets/attention-sentry.png" width="1280" height="800" loading="lazy"
+             alt="Attention Sentry check-in on a Wikipedia article, showing the trail of links followed from Calculus to Number theory.">
+        <h3>Attention Sentry</h3>
+        <p>A Chrome extension for studying on sites like YouTube, Reddit and Wikipedia. When a site uses a feature built to hold your attention, like infinite scroll, autoplay or view counts, it steps in and tells you which one it is, so you start to notice them yourself.</p>
+        <p>YouTube view counts are hidden before they ever paint, using a MutationObserver. A jsdom test suite runs the real extension scripts against mocked Chrome APIs on every pull request.</p>
+        <p class="tech">JavaScript · Chrome Extensions (Manifest V3) · jsdom · GitHub Actions</p>
+        <p class="project-links">
+          <a href="https://github.com/tomup5/AttentionSentry-ChromeExtension#installation" rel="noopener">Install</a>
+          <a href="https://github.com/tomup5/AttentionSentry-ChromeExtension" rel="noopener">Read the code</a>
+        </p>
+      </article>
+
+      <article class="project">
+        <a href="https://github.com/tomup5/Taxify/blob/main/docs/class-diagram.png" rel="noopener" class="image-link">
+          <img src="assets/taxify-diagram.png" width="1360" height="465" loading="lazy"
+               alt="Part of the Taxify UML class diagram: the TaxiCompany class and the observer, service and statistics interfaces.">
+        </a>
+        <h3>Taxify</h3>
+        <p>A ride-hailing and micro-mobility simulation in Java, built with a teammate during my semester at SLU Madrid. Users on a city grid request taxis and shuttles, share rides, and rent bikes and scooters whose batteries run down and recharge.</p>
+        <p>It has 30+ classes built around interfaces and the Observer pattern, and 51 JUnit 5 tests, including seeded runs that check after every step that no rider is ever booked twice.</p>
+        <p class="tech">Java · JUnit 5 · Gradle · GitHub Actions</p>
+        <p class="project-links">
+          <a href="https://github.com/tomup5/Taxify" rel="noopener">Read the code</a>
+        </p>
+      </article>
     </section>
 
     <section id="about">
