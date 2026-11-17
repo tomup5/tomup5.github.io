@@ -101,6 +101,11 @@ const checks = [
       m.includes('href="https://www.linkedin.com/in/thomas-dupree-6a1526380/"')) ||
       "contact section missing email or LinkedIn link";
   }],
+  ["attentionSentryStoreLink", () => {
+    if (html.includes("#installation")) return "still links to README install steps";
+    return html.includes('href="https://chromewebstore.google.com/detail/attention-sentry-study-wi/amfaapdddenljaahkfjhbffofjacekfn"') ||
+      "Chrome Web Store link missing";
+  }],
   ["photoExists", () => {
     const img = html.match(/<img[^>]*class="[^"]*\bhero-photo\b[^"]*"[^>]*>/)?.[0];
     if (!img) return "hero photo <img class=\"hero-photo\"> missing";
