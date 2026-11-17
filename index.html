@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,83 +10,309 @@
   <meta property="og:description" content="CS + Math student at Saint Louis University building web apps, games, and tools.">
   <meta property="og:url" content="https://tomup5.github.io/">
   <meta property="og:image" content="https://tomup5.github.io/assets/og.png">
-  <meta name="theme-color" content="#141311">
+  <meta name="theme-color" content="#0b0e14">
+  <link rel="canonical" href="https://tomup5.github.io/">
+  <script>
+    (function () {
+      var t;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      var root = document.documentElement;
+      root.dataset.theme = t === "light" ? "light" : "dark";
+      root.classList.add("js");
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Thomas Dupree</h1>
-    <p class="intro">CS + Math student at Saint Louis University building web apps, games, and tools.</p>
-    <p class="links">
-      <a class="button" href="resume.pdf">Resume</a>
-      <a href="https://github.com/tomup5" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/thomas-dupree-6a1526380/" rel="noopener">LinkedIn</a>
-    </p>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Thomas Dupree</a>
+      <nav id="nav-links" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle icon-button" type="button" aria-label="Switch to light theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="menu-toggle icon-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section id="projects">
-      <h2>Projects</h2>
-
-      <article class="project">
-        <img src="assets/attention-sentry.png" width="1280" height="800" loading="lazy"
-             alt="Attention Sentry check-in on a Wikipedia article, showing the trail of links followed from Calculus to Number theory.">
-        <h3>Attention Sentry</h3>
-        <p>A Chrome extension for studying on sites like YouTube, Reddit and Wikipedia. When a site uses a feature built to hold your attention, like infinite scroll, autoplay or view counts, it steps in and tells you which one it is, so you start to notice them yourself.</p>
-        <p>YouTube view counts are hidden before they ever paint, using a MutationObserver. A jsdom test suite runs the real extension scripts against mocked Chrome APIs on every pull request.</p>
-        <p class="tech">JavaScript · Chrome Extensions (Manifest V3) · jsdom · GitHub Actions</p>
-        <p class="project-links">
-          <a href="https://github.com/tomup5/AttentionSentry-ChromeExtension#installation" rel="noopener">Install</a>
-          <a href="https://github.com/tomup5/AttentionSentry-ChromeExtension" rel="noopener">Read the code</a>
+  <main id="main">
+    <section class="hero container" id="top">
+      <div class="hero-text">
+        <h1>
+          Hi! I'm Thomas,<br>
+          <span class="typed-line"><span class="typed" data-phrases='["a CS + Math student","a web developer","a tool builder","a game dev"]'>a CS + Math student</span><span class="caret" aria-hidden="true"></span></span>
+        </h1>
+        <p class="hero-intro">CS + Math at Saint Louis University, building web apps, games, and tools.</p>
+        <p class="link-row">
+          <a href="https://www.linkedin.com/in/thomas-dupree-6a1526380/" rel="noopener">LinkedIn<span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="https://github.com/tomup5" rel="noopener">GitHub<span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="resume.pdf">Resume<span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="mailto:thomasdupree2024@gmail.com">Email</a>
         </p>
-      </article>
+      </div>
 
-      <article class="project">
-        <a href="https://github.com/tomup5/Taxify/blob/main/docs/class-diagram.png" rel="noopener" class="image-link">
-          <img src="assets/taxify-diagram.png" width="1360" height="465" loading="lazy"
-               alt="Part of the Taxify UML class diagram: the TaxiCompany class and the observer, service and statistics interfaces.">
-        </a>
-        <h3>Taxify</h3>
-        <p>A ride-hailing and micro-mobility simulation in Java, built with a teammate during my semester at SLU Madrid. Users on a city grid request taxis and shuttles, share rides, and rent bikes and scooters whose batteries run down and recharge.</p>
-        <p>It has 30+ classes built around interfaces and the Observer pattern, and 51 JUnit 5 tests, including seeded runs that check after every step that no rider is ever booked twice.</p>
-        <p class="tech">Java · JUnit 5 · Gradle · GitHub Actions</p>
-        <p class="project-links">
-          <a href="https://github.com/tomup5/Taxify" rel="noopener">Read the code</a>
+      <div class="hero-art">
+        <svg class="graph" viewBox="0 0 440 400" aria-hidden="true">
+          <g class="edges">
+            <line x1="110" y1="170" x2="58" y2="132"/>
+            <line x1="58" y1="132" x2="22" y2="74"/>
+            <line x1="58" y1="132" x2="18" y2="196"/>
+            <line x1="22" y1="74" x2="70" y2="30"/>
+            <line x1="270" y1="90" x2="304" y2="36"/>
+            <line x1="304" y1="36" x2="382" y2="20"/>
+            <line x1="304" y1="36" x2="238" y2="14"/>
+            <line x1="170" y1="310" x2="140" y2="368"/>
+            <line x1="140" y1="368" x2="74" y2="384"/>
+            <line x1="140" y1="368" x2="206" y2="390"/>
+            <line x1="330" y1="200" x2="420" y2="168"/>
+          </g>
+          <g class="edges accent-path">
+            <line x1="330" y1="246" x2="388" y2="290"/>
+            <line x1="388" y1="290" x2="424" y2="356"/>
+          </g>
+          <g class="nodes">
+            <circle cx="58" cy="132" r="4.5"/>
+            <circle cx="22" cy="74" r="4.5"/>
+            <circle cx="18" cy="196" r="4.5"/>
+            <circle cx="70" cy="30" r="4.5"/>
+            <circle cx="304" cy="36" r="4.5"/>
+            <circle cx="382" cy="20" r="4.5"/>
+            <circle cx="238" cy="14" r="4.5"/>
+            <circle cx="140" cy="368" r="4.5"/>
+            <circle cx="74" cy="384" r="4.5"/>
+            <circle cx="206" cy="390" r="4.5"/>
+            <circle cx="420" cy="168" r="4.5"/>
+            <circle cx="388" cy="290" r="4.5"/>
+          </g>
+          <circle class="node-accent" cx="424" cy="356" r="5.5"/>
+        </svg>
+        <img class="hero-photo" src="assets/thomas.jpg" width="460" height="460" alt="Thomas Dupree">
+      </div>
+    </section>
+
+    <div class="container"><div class="rule"></div></div>
+
+    <section id="about" class="section container reveal">
+      <div class="section-head">
+        <p class="label">About</p>
+        <h2 class="title">A bit about me.</h2>
+      </div>
+      <div class="section-body about">
+        <p>I'm a computer science and math student at Saint Louis University. I spent spring 2026 at SLU's Madrid campus learning Spanish from scratch, I've volunteered as a STEM mentor for elementary school kids in St. Louis, and right now I'm building a soccer game.</p>
+      </div>
+    </section>
+
+    <div class="container"><div class="rule"></div></div>
+
+    <section id="projects" class="section container reveal">
+      <div class="section-head">
+        <p class="label">Projects</p>
+        <h2 class="title">Things I've made.</h2>
+      </div>
+      <div class="section-body">
+        <article class="project">
+          <a class="project-image" href="https://github.com/tomup5/AttentionSentry-ChromeExtension" rel="noopener" tabindex="-1">
+            <img src="assets/attention-sentry.png" width="1280" height="800" loading="lazy"
+                 alt="Attention Sentry check-in on a Wikipedia article, showing the trail of links followed from Calculus to Number theory.">
+          </a>
+          <div class="project-text">
+            <div class="project-top">
+              <h3>Attention Sentry</h3>
+              <a class="mono small-link" href="https://github.com/tomup5/AttentionSentry-ChromeExtension" rel="noopener">Code<span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+            <p class="subtitle mono">Chrome extension · Manifest V3</p>
+            <p>A Chrome extension for studying on sites like YouTube, Reddit and Wikipedia. When a site uses a feature built to hold your attention, like infinite scroll, autoplay or view counts, it steps in and tells you which one it is.</p>
+            <p>YouTube view counts are hidden before they ever paint, using a MutationObserver. A jsdom test suite runs the real extension scripts against mocked Chrome APIs on every pull request.</p>
+            <p class="tech mono">JavaScript · jsdom · GitHub Actions</p>
+            <p class="link-row small">
+              <a href="https://github.com/tomup5/AttentionSentry-ChromeExtension#installation" rel="noopener">Install</a>
+              <a href="https://github.com/tomup5/AttentionSentry-ChromeExtension" rel="noopener">Read the code</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="project-image" href="https://github.com/tomup5/Taxify/blob/main/docs/class-diagram.png" rel="noopener" tabindex="-1">
+            <img src="assets/taxify-diagram.png" width="1360" height="465" loading="lazy"
+                 alt="Part of the Taxify UML class diagram: the TaxiCompany class and the observer, service and statistics interfaces.">
+          </a>
+          <div class="project-text">
+            <div class="project-top">
+              <h3>Taxify</h3>
+              <a class="mono small-link" href="https://github.com/tomup5/Taxify" rel="noopener">Code<span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+            <p class="subtitle mono">Team project · SLU Madrid</p>
+            <p>A ride-hailing and micro-mobility simulation in Java, built with a teammate. Users on a city grid request taxis and shuttles, share rides, and rent bikes and scooters whose batteries run down and recharge.</p>
+            <p>30+ classes built around interfaces and the Observer pattern, and 51 JUnit 5 tests, including seeded runs that check after every step that no rider is ever booked twice.</p>
+            <p class="tech mono">Java · JUnit 5 · Gradle · GitHub Actions</p>
+            <p class="link-row small">
+              <a href="https://github.com/tomup5/Taxify/blob/main/docs/class-diagram.png" rel="noopener">Full class diagram</a>
+              <a href="https://github.com/tomup5/Taxify" rel="noopener">Read the code</a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="container"><div class="rule"></div></div>
+
+    <section id="education" class="section container reveal">
+      <div class="section-head">
+        <p class="label">Education &amp; activities</p>
+        <h2 class="title">Where I study.</h2>
+      </div>
+      <div class="section-body">
+        <div class="entry">
+          <p class="entry-date mono">Expected May 2028</p>
+          <div>
+            <h3>B.S. Computer Science, B.A. Mathematics</h3>
+            <p class="org">Saint Louis University</p>
+            <p class="meta mono">St. Louis, MO · GPA 3.92/4.0</p>
+            <p class="detail">Data Structures, Algorithms, Computer Operations and Systems, Calculus 3</p>
+
+            <p class="sub-label mono">Activities</p>
+            <ul class="activity-list">
+              <li><span>STEM Mentor, teaching elementary school kids in St. Louis</span><span class="mono">Fall 2024</span></li>
+              <li><span>SLU Pep Band</span><span class="mono">Fall 2024 – Present</span></li>
+              <li><span>Intramural Sports</span><span class="mono">Fall 2024 – Present</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <p class="entry-date mono">Spring 2026</p>
+          <div>
+            <h3>Study Abroad</h3>
+            <p class="org">Saint Louis University, Madrid Campus</p>
+            <p class="meta mono">Madrid, Spain · Software Engineering, Physics, Spanish</p>
+            <ul class="dash-list">
+              <li>Designed and built Taxify, a Java ride-sharing simulation, with an international team.</li>
+              <li>Learned Spanish from scratch while living there.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="rule"></div></div>
+
+    <section id="experience" class="section container reveal">
+      <div class="section-head">
+        <p class="label">Experience</p>
+        <h2 class="title">Work so far.</h2>
+      </div>
+      <div class="section-body">
+        <div class="entry">
+          <p class="entry-date mono">Summer 2025, Summer 2026</p>
+          <div>
+            <h3>Head Lifeguard</h3>
+            <p class="org">City of Chesterfield</p>
+            <p class="meta mono">Chesterfield, MO</p>
+            <ul class="dash-list">
+              <li>Led a team of 14+ lifeguards day to day and kept the facility safe.</li>
+              <li>Stayed calm and clear with patrons and coworkers during medical emergencies.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="rule"></div></div>
+
+    <section id="skills" class="section container reveal">
+      <div class="section-head">
+        <p class="label">Skills</p>
+        <h2 class="title">What I work with.</h2>
+        <p class="legend mono">The squares are how comfortable I am. Four means I could teach it.</p>
+      </div>
+      <div class="section-body skills-grid">
+        <div class="skill-group">
+          <p class="sub-label mono">Languages</p>
+          <ul>
+            <li class="skill-row" data-level="3"><span class="skill-name">Java</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">3 of 4</span></li>
+            <li class="skill-row" data-level="3"><span class="skill-name">JavaScript</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">3 of 4</span></li>
+            <li class="skill-row" data-level="3"><span class="skill-name">Python</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">3 of 4</span></li>
+            <li class="skill-row" data-level="3"><span class="skill-name">HTML/CSS</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">3 of 4</span></li>
+            <li class="skill-row" data-level="2"><span class="skill-name">C</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">2 of 4</span></li>
+            <li class="skill-row" data-level="2"><span class="skill-name">C++</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">2 of 4</span></li>
+            <li class="skill-row" data-level="2"><span class="skill-name">SQL</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">2 of 4</span></li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <p class="sub-label mono">Tools &amp; platforms</p>
+          <ul>
+            <li class="skill-row" data-level="3"><span class="skill-name">Git</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">3 of 4</span></li>
+            <li class="skill-row" data-level="3"><span class="skill-name">GitHub Actions</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">3 of 4</span></li>
+            <li class="skill-row" data-level="3"><span class="skill-name">VS Code</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">3 of 4</span></li>
+            <li class="skill-row" data-level="2"><span class="skill-name">Linux</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">2 of 4</span></li>
+            <li class="skill-row" data-level="2"><span class="skill-name">ESLint</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">2 of 4</span></li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <p class="sub-label mono">Frameworks &amp; data</p>
+          <ul>
+            <li class="skill-row" data-level="3"><span class="skill-name">Chrome Extensions API</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">3 of 4</span></li>
+            <li class="skill-row" data-level="2"><span class="skill-name">jsdom</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">2 of 4</span></li>
+            <li class="skill-row" data-level="2"><span class="skill-name">Node.js</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">2 of 4</span></li>
+            <li class="skill-row" data-level="1"><span class="skill-name">React</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">1 of 4</span></li>
+            <li class="skill-row" data-level="1"><span class="skill-name">MongoDB</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">1 of 4</span></li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <p class="sub-label mono">Spoken languages</p>
+          <ul>
+            <li class="skill-row" data-level="4"><span class="skill-name">English</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">4 of 4</span></li>
+            <li class="skill-row" data-level="2"><span class="skill-name">Spanish</span><span class="meter"><i></i><i></i><i></i><i></i></span><span class="sr-only">2 of 4</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="rule"></div></div>
+
+    <section id="contact" class="section container reveal">
+      <div class="section-head">
+        <p class="label">Contact</p>
+        <h2 class="title">Let's talk.</h2>
+      </div>
+      <div class="section-body">
+        <p class="contact-text">Internships, projects, or just a question about something I built: email is the fastest way to reach me.</p>
+        <p class="link-row">
+          <a href="mailto:thomasdupree2024@gmail.com">thomasdupree2024@gmail.com</a>
+          <a href="https://www.linkedin.com/in/thomas-dupree-6a1526380/" rel="noopener">LinkedIn<span class="arrow" aria-hidden="true">↗</span></a>
         </p>
-      </article>
-    </section>
-
-    <section id="about">
-      <h2>About</h2>
-      <p>I'm studying computer science and math at Saint Louis University, graduating in May 2028. In spring 2026 I spent a semester at SLU's Madrid campus, where I took software engineering and physics, built Taxify with a teammate, and learned Spanish from scratch by living in it. Back in St. Louis I've volunteered as a STEM mentor, running hands-on activities for elementary school kids who don't often get to try this stuff. I like building things people actually use, and I'm working on a soccer game next.</p>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <dl class="skills">
-        <dt>Languages</dt>
-        <dd>Python, Java, C, C++, JavaScript, HTML, CSS, SQL</dd>
-        <dt>Tools</dt>
-        <dd>Git, GitHub, GitHub Actions, Linux and the command line, VS Code, ESLint</dd>
-        <dt>Frameworks</dt>
-        <dd>React, Node.js, Chrome Extensions API (Manifest V3), jsdom</dd>
-        <dt>Databases</dt>
-        <dd>MongoDB</dd>
-      </dl>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>The best way to reach me is email. I'm also on LinkedIn.</p>
-      <p class="links">
-        <a href="mailto:thomasdupree2024@gmail.com">thomasdupree2024@gmail.com</a>
-        <a href="https://www.linkedin.com/in/thomas-dupree-6a1526380/" rel="noopener">LinkedIn</a>
-      </p>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 Thomas Dupree</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="mono">© 2026 Thomas Dupree</p>
+      <p class="link-row small">
+        <a href="https://github.com/tomup5" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/thomas-dupree-6a1526380/" rel="noopener">LinkedIn</a>
+        <a href="resume.pdf">Resume</a>
+        <a href="mailto:thomasdupree2024@gmail.com">Email</a>
+      </p>
+    </div>
   </footer>
 </body>
 </html>
