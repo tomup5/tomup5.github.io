@@ -133,8 +133,30 @@ const checks = [
     const bare = css.replace(/\/\*[\s\S]*?\*\//g, "");
     const rules = [...bare.matchAll(/([^{}]*\.reveal[^{}]*)\{([^}]*)\}/g)]
       .filter(([, , body]) => /opacity:\s*0[;\s]/.test(body));
-    const bad = rules.filter(([, sel]) => !sel.trim().split(",").every((s) => s.trim().startsWith(".js")));
-    return bad.length === 0 || `.reveal hidden without .js scope: ${bad[0][1].trim()}`;
+    // Only script.js's initReveal adds .reveal-ready, so a missing or crashing script can't hide sections.
+    const bad = rules.filter(([, sel]) => !sel.trim().split(",").every((s) => s.trim().startsWith(".reveal-ready")));
+    if (bad.length) return `.reveal hidden without .reveal-ready scope: ${bad[0][1].trim()}`;
+    const js = read("script.js") ?? "";
+    return js.includes('classList.add("reveal-ready")') || "script.js never adds .reveal-ready";
+  }],
+  ["printShowsAll", () =>
+    /@media print\s*\{[\s\S]*?\.reveal[\s\S]*?opacity:\s*1/.test(css) || "no print rule un-hiding .reveal"],
+  ["scriptFailSafe", () => {
+    const js = read("script.js") ?? "";
+    if (/matchMedia\("[^"]*"\)\s*\.addEventListener/.test(js)) return "matchMedia(...).addEventListener throws on Safari < 14";
+    const inits = [...js.matchAll(/^\s*(init[A-Z]\w*)\(\);/gm)];
+    return inits.length === 0 || `init calls not wrapped in run(): ${inits.map((m) => m[1]).join(", ")}`;
+  }],
+  ["meterSquaresVisible", () => {
+    const problems = [];
+    for (const [name, sel] of [["dark", ":root"], ["light", ':root[data-theme="light"]']]) {
+      const t = tokensIn(sel);
+      if (!t?.node) { problems.push(`${name} --node missing`); continue; }
+      const r = ratio(t.node, t.bg);
+      if (r < 3) problems.push(`${name} --node ${r.toFixed(2)}:1 (need 3:1)`);
+    }
+    if (!/\.meter i\s*\{[^}]*var\(--node\)/.test(css)) problems.push("empty meter squares don't use --node");
+    return problems.length === 0 || problems.join(", ");
   }],
   ["reducedMotion", () => css.includes("prefers-reduced-motion") || "no prefers-reduced-motion rule"],
   ["internalDocsNotPublished", () => {

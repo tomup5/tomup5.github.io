@@ -10,7 +10,7 @@
   <meta property="og:description" content="CS + Math student at Saint Louis University building web apps, games, and tools.">
   <meta property="og:url" content="https://tomup5.github.io/">
   <meta property="og:image" content="https://tomup5.github.io/assets/og.png">
-  <meta name="theme-color" content="#0b0e14">
+  <meta name="theme-color" content="#0a0f1c">
   <link rel="canonical" href="https://tomup5.github.io/">
   <script>
     (function () {
@@ -19,6 +19,10 @@
       var root = document.documentElement;
       root.dataset.theme = t === "light" ? "light" : "dark";
       root.classList.add("js");
+      if (t === "light") {
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", "#f7f8fb");
+      }
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,8 +61,9 @@
     <section class="hero container" id="top">
       <div class="hero-text">
         <h1>
-          Hi! I'm Thomas,<br>
-          <span class="typed-line"><span class="typed" data-phrases='["a CS + Math student","a web developer","a tool builder","a game dev"]'>a CS + Math student</span><span class="caret" aria-hidden="true"></span></span>
+          <span class="sr-only">Hi! I'm Thomas, a CS + Math student, web developer, tool builder and game dev.</span>
+          <span aria-hidden="true">Hi! I'm Thomas,<br>
+          <span class="typed-line"><span class="typed" data-phrases='["a CS + Math student","a web developer","a tool builder","a game dev"]'>a CS + Math student</span><span class="caret"></span></span></span>
         </h1>
         <p class="hero-intro">CS + Math at Saint Louis University, building web apps, games, and tools.</p>
         <p class="link-row">
@@ -125,7 +130,7 @@
     <section id="projects" class="section container reveal">
       <div class="section-head">
         <p class="label">Projects</p>
-        <h2 class="title">Things I've made.</h2>
+        <h2 class="title">Selected work.</h2>
       </div>
       <div class="section-body">
         <article class="project">
@@ -177,7 +182,7 @@
     <section id="education" class="section container reveal">
       <div class="section-head">
         <p class="label">Education &amp; activities</p>
-        <h2 class="title">Where I study.</h2>
+        <h2 class="title">School, and what's around it.</h2>
       </div>
       <div class="section-body">
         <div class="entry">
